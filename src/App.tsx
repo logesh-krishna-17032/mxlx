@@ -17,7 +17,7 @@ const events = [
     date: 'Friday, May 29, 2026',
     time: 'Muhurtham 5:40 AM - 6:40 AM',
     note: 'The sacred ceremony and auspicious union.',
-    icon: '☙',
+    icon: '∞',
     calendarDates: '20260529T001000Z/20260529T011000Z',
   },
 ]
@@ -85,6 +85,13 @@ function App() {
     <main className="page-shell">
       <article className="invite-card" aria-label="Wedding invitation">
         <section className="opening">
+          <div className="scene-decor" aria-hidden="true">
+            <span className="hanging-lamp lamp-left" />
+            <span className="hanging-lamp lamp-right" />
+            <span className="petal petal-one" />
+            <span className="petal petal-two" />
+            <span className="petal petal-three" />
+          </div>
           <div className="photo-panel" aria-hidden="true">
             <img
               src="/invite/engagement-hands.jpg"
@@ -96,7 +103,7 @@ function App() {
             <p className="blessing">With the blessings of our families</p>
             <div className="ornament" aria-hidden="true">
               <span />
-              <i>❦</i>
+              <i>✽</i>
               <span />
             </div>
             <h1>
@@ -110,12 +117,16 @@ function App() {
               our forever.
             </p>
           </div>
+          <div className="scroll-cue" aria-hidden="true">
+            Scroll
+            <span />
+          </div>
         </section>
 
         <section className="date-block" id="save-date" aria-labelledby="wedding-date">
           <div className="divider" aria-hidden="true">
             <span />
-            <i>❦</i>
+            <i>✽</i>
             <span />
           </div>
           <p>Friday</p>
@@ -125,6 +136,18 @@ function App() {
             <span>2026</span>
           </h2>
           <p>Sri S.A.K Jai Maruthi Mahal A/c, Chennai - 125</p>
+          <div className="ceremony-strip" aria-label="Ceremony dates">
+            <div>
+              <span>Reception</span>
+              <strong>May 28</strong>
+              <small>7:00 PM onwards</small>
+            </div>
+            <div>
+              <span>Wedding</span>
+              <strong>May 29</strong>
+              <small>Muhurtham 5:40 AM</small>
+            </div>
+          </div>
         </section>
 
         <section className="countdown-section" aria-label="Countdown to wedding">
@@ -168,7 +191,7 @@ function App() {
         <section className="map-section" aria-labelledby="map-title">
           <div className="divider" aria-hidden="true">
             <span />
-            <i>✦</i>
+            <i>✽</i>
             <span />
           </div>
           <p className="section-label">Venue Location</p>

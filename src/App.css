@@ -26,6 +26,81 @@
   isolation: isolate;
 }
 
+.scene-decor {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hanging-lamp {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 118px;
+  background: linear-gradient(#eed398, rgba(238, 211, 152, 0.1));
+}
+
+.hanging-lamp::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  bottom: -7px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50% 50% 45% 45%;
+  background: #f3c977;
+  box-shadow: 0 0 24px 8px rgba(243, 201, 119, 0.34);
+}
+
+.hanging-lamp::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  bottom: -24px;
+  width: 20px;
+  height: 10px;
+  border-radius: 0 0 999px 999px;
+  background: rgba(163, 89, 38, 0.72);
+}
+
+.lamp-left {
+  left: 7%;
+}
+
+.lamp-right {
+  right: 8%;
+  height: 92px;
+}
+
+.petal {
+  position: absolute;
+  width: 12px;
+  height: 24px;
+  border-radius: 80% 20% 80% 20%;
+  background: linear-gradient(135deg, #f4c08c, #b45041);
+  opacity: 0.8;
+  transform: rotate(28deg);
+}
+
+.petal-one {
+  top: 18%;
+  left: 18%;
+}
+
+.petal-two {
+  right: 18%;
+  top: 26%;
+  transform: rotate(-34deg);
+}
+
+.petal-three {
+  right: 12%;
+  bottom: 18%;
+  opacity: 0.58;
+  transform: rotate(54deg);
+}
+
 .photo-panel {
   grid-area: 1 / 1;
   position: relative;
@@ -116,9 +191,11 @@ h3 {
 h1 {
   margin: 0;
   color: #fff8ec;
-  font-size: clamp(4rem, 7.4vw, 7rem);
+  font-family: var(--name);
+  font-size: clamp(4.35rem, 7.8vw, 7.7rem);
+  font-weight: 400;
   line-height: 0.9;
-  letter-spacing: 0.015em;
+  letter-spacing: 0.01em;
   max-width: 100%;
   overflow-wrap: break-word;
   text-shadow: 0 8px 34px rgba(20, 6, 2, 0.55);
@@ -135,8 +212,9 @@ h1 span:first-child {
 
 h1 span:nth-child(2) {
   color: #fff1df;
-  font-size: 0.94em;
+  font-size: 0.88em;
   font-style: italic;
+  letter-spacing: 0.03em;
   transform: translateX(0.16em);
 }
 
@@ -149,9 +227,11 @@ h1 span:last-child {
 h1 em {
   display: block;
   color: #f0c579;
-  font-size: 2.6rem;
+  font-family: var(--script);
+  font-size: 3rem;
   font-style: italic;
-  line-height: 1.38;
+  line-height: 1.12;
+  margin: 0.18em 0 0.08em;
   text-shadow: none;
 }
 
@@ -162,6 +242,28 @@ h1 em {
   font-family: var(--script);
   font-size: 1.6rem;
   line-height: 1.55;
+}
+
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  color: rgba(255, 231, 191, 0.78);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+}
+
+.scroll-cue span {
+  width: 1px;
+  height: 34px;
+  background: linear-gradient(rgba(255, 231, 191, 0.9), transparent);
 }
 
 .date-block,
@@ -224,6 +326,44 @@ h1 em {
   line-height: 0.92;
 }
 
+.ceremony-strip {
+  width: min(620px, 100%);
+  margin: 34px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid rgba(169, 129, 73, 0.22);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255, 253, 248, 0.6);
+}
+
+.ceremony-strip div {
+  padding: 18px 16px;
+}
+
+.ceremony-strip div + div {
+  border-left: 1px solid rgba(169, 129, 73, 0.22);
+}
+
+.ceremony-strip span,
+.ceremony-strip small {
+  display: block;
+  color: #8a6a3f;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.ceremony-strip strong {
+  display: block;
+  margin: 2px 0;
+  color: #2b2018;
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 400;
+}
+
 .countdown-section {
   padding-top: 24px;
   background: #fffaf2;
@@ -275,9 +415,32 @@ h1 em {
   border-radius: 16px;
   padding: 34px 34px 30px;
   background:
+    radial-gradient(circle at 50% 0%, rgba(201, 147, 63, 0.12), transparent 8rem),
     linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 247, 234, 0.82)),
     #fffaf2;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.event::before,
+.event::after {
+  content: '';
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  border: 1px solid rgba(179, 133, 67, 0.22);
+  transform: rotate(45deg);
+}
+
+.event::before {
+  top: -34px;
+  left: -34px;
+}
+
+.event::after {
+  right: -34px;
+  bottom: -34px;
 }
 
 .event-mark {
@@ -292,7 +455,7 @@ h1 em {
     #fffaf2;
   display: block;
   font-family: var(--serif);
-  font-size: 1.45rem;
+  font-size: 1.62rem;
   line-height: 44px;
   text-align: center;
   box-shadow: 0 8px 22px rgba(123, 78, 25, 0.08);
@@ -338,6 +501,7 @@ h1 em {
 .map-section {
   border-top: 1px solid #eee0ca;
   background:
+    radial-gradient(circle at 50% 100%, rgba(183, 46, 54, 0.08), transparent 18rem),
     linear-gradient(180deg, #fffdf8, #fff8ec);
 }
 
@@ -412,6 +576,8 @@ h1 em {
 .closing {
   border-top: 1px solid #eee5d7;
   background:
+    radial-gradient(circle at 12% 82%, rgba(238, 190, 105, 0.18), transparent 12rem),
+    radial-gradient(circle at 88% 18%, rgba(238, 190, 105, 0.14), transparent 10rem),
     radial-gradient(circle at 50% 0%, rgba(168, 36, 47, 0.1), transparent 22rem),
     #2f1712;
 }
@@ -468,7 +634,9 @@ h1 em {
   }
 
   .photo-panel::after {
-    background: linear-gradient(0deg, rgba(255, 253, 248, 0.72), transparent 42%);
+    background:
+      linear-gradient(0deg, rgba(45, 22, 16, 0.46), transparent 42%),
+      linear-gradient(90deg, rgba(45, 22, 16, 0.34), rgba(45, 22, 16, 0.2));
   }
 
   .opening-copy,
@@ -482,7 +650,7 @@ h1 em {
   }
 
   h1 {
-    font-size: clamp(3.2rem, 12vw, 5.4rem);
+    font-size: clamp(3.1rem, 12vw, 5.4rem);
   }
 
   .events,
@@ -534,11 +702,11 @@ h1 em {
   }
 
   h1 {
-    font-size: 2.66rem;
+    font-size: 2.58rem;
   }
 
   h1 em {
-    font-size: 1.45rem;
+    font-size: 1.75rem;
   }
 
   .invite-line,
@@ -560,6 +728,15 @@ h1 em {
 
   .countdown {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ceremony-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .ceremony-strip div + div {
+    border-left: 0;
+    border-top: 1px solid rgba(169, 129, 73, 0.22);
   }
 
   .event {
