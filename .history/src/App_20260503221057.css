@@ -437,14 +437,14 @@ h1 em {
   box-shadow: 0 10px 28px rgba(113, 75, 30, 0.06);
 }
 
-/* .count::before {
+.count::before {
   content: '';
   position: absolute;
   inset: 9px;
   border: 1px solid rgba(174, 127, 55, 0.12);
   border-radius: 8px;
   pointer-events: none;
-} */
+}
 
 .count strong {
   color: #8a602b;

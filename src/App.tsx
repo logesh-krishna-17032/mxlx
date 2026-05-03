@@ -88,6 +88,11 @@ function App() {
             <span className="petal petal-one" />
             <span className="petal petal-two" />
             <span className="petal petal-three" />
+            <span className="floating-particle particle-one" />
+            <span className="floating-particle particle-two" />
+            <span className="floating-particle particle-three" />
+            <span className="floating-particle particle-four" />
+            <span className="floating-particle particle-five" />
           </div>
           <div className="photo-panel" aria-hidden="true">
             <img
