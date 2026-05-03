@@ -9,7 +9,7 @@ const events = [
     date: 'Thursday, May 28, 2026',
     time: '7:00 PM onwards',
     note: 'An evening celebration with family and friends.',
-    icon: '❀',
+    icon: '✺',
     calendarDates: '20260528T133000Z/20260528T173000Z',
   },
   {
@@ -17,7 +17,7 @@ const events = [
     date: 'Friday, May 29, 2026',
     time: 'Muhurtham 5:40 AM - 6:40 AM',
     note: 'The sacred ceremony and auspicious union.',
-    icon: '∞',
+    icon: 'ॐ',
     calendarDates: '20260529T001000Z/20260529T011000Z',
   },
 ]
@@ -67,10 +67,7 @@ function App() {
   }, [])
 
   const links = useMemo(() => {
-    const address =
-      'Sri S.A.K JAI MARUTHI MAHAL A/c, Madhanandhapuram Main Road, Chennai 125'
     return {
-      maps: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`,
       calendar: getCalendarUrl(
         'Logesh & Meenakshi Wedding',
         '20260529T001000Z/20260529T011000Z',
@@ -103,7 +100,7 @@ function App() {
             <p className="blessing">With the blessings of our families</p>
             <div className="ornament" aria-hidden="true">
               <span />
-              <i>✽</i>
+              <i>ॐ</i>
               <span />
             </div>
             <h1>
@@ -117,16 +114,12 @@ function App() {
               our forever.
             </p>
           </div>
-          <div className="scroll-cue" aria-hidden="true">
-            Scroll
-            <span />
-          </div>
         </section>
 
         <section className="date-block" id="save-date" aria-labelledby="wedding-date">
           <div className="divider" aria-hidden="true">
             <span />
-            <i>✽</i>
+            <i>ॐ</i>
             <span />
           </div>
           <p>Friday</p>
@@ -188,10 +181,27 @@ function App() {
           ))}
         </section>
 
+        <section className="memory-section" aria-labelledby="memory-title">
+          <div className="memory-photo">
+            <img
+              src="/invite/engagement-portrait.jpg"
+              alt="Engagement cake with Meenu and Logesh written on it"
+            />
+          </div>
+          <div className="memory-copy">
+            <p className="section-label">Engagement Moment</p>
+            <h2 id="memory-title">Meenu & Logesh</h2>
+            <p>
+              A sweet memory from the beginning of this journey, carried forward
+              into the wedding celebration.
+            </p>
+          </div>
+        </section>
+
         <section className="map-section" aria-labelledby="map-title">
           <div className="divider" aria-hidden="true">
             <span />
-            <i>✽</i>
+            <i>ॐ</i>
             <span />
           </div>
           <p className="section-label">Venue Location</p>

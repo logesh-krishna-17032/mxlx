@@ -5,6 +5,39 @@
     radial-gradient(circle at 18% 8%, rgba(184, 43, 58, 0.12), transparent 28rem),
     radial-gradient(circle at 84% 0%, rgba(204, 153, 60, 0.18), transparent 25rem),
     linear-gradient(135deg, #fffaf0, #f8efe3 54%, #fff9ef);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-shell::before,
+.page-shell::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(185, 128, 51, 0.18) 0 1px, transparent 1.8px),
+    radial-gradient(circle, rgba(141, 45, 40, 0.12) 0 1px, transparent 1.8px);
+  background-position:
+    12% 18%,
+    74% 38%;
+  background-size:
+    86px 126px,
+    132px 172px;
+  opacity: 0.54;
+}
+
+.page-shell::after {
+  background-image:
+    radial-gradient(circle, rgba(229, 183, 101, 0.32) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(255, 244, 216, 0.44) 0 1px, transparent 2px);
+  background-position:
+    35% 10%,
+    88% 72%;
+  background-size:
+    154px 190px,
+    210px 260px;
+  opacity: 0.42;
 }
 
 .invite-card {
@@ -16,6 +49,8 @@
   box-shadow: 0 30px 90px rgba(83, 42, 22, 0.13);
   color: #40382f;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
 
 .opening {
@@ -31,6 +66,27 @@
   inset: 0;
   z-index: 2;
   pointer-events: none;
+}
+
+.scene-decor::before,
+.scene-decor::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(251, 215, 145, 0.8) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(255, 242, 208, 0.64) 0 1px, transparent 2px);
+  background-size: 74px 92px, 116px 138px;
+  opacity: 0.58;
+}
+
+.scene-decor::before {
+  inset: 10% 8% 18%;
+}
+
+.scene-decor::after {
+  inset: 18% 18% 10%;
+  filter: blur(0.2px);
 }
 
 .hanging-lamp {
@@ -176,8 +232,9 @@
 
 .ornament i {
   font-family: var(--serif);
-  font-size: 2rem;
+  font-size: 2.35rem;
   font-style: normal;
+  line-height: 1;
 }
 
 h1,
@@ -244,31 +301,10 @@ h1 em {
   line-height: 1.55;
 }
 
-.scroll-cue {
-  position: absolute;
-  left: 50%;
-  bottom: 24px;
-  z-index: 2;
-  display: grid;
-  justify-items: center;
-  gap: 8px;
-  color: rgba(255, 231, 191, 0.78);
-  font-size: 0.64rem;
-  font-weight: 600;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  transform: translateX(-50%);
-}
-
-.scroll-cue span {
-  width: 1px;
-  height: 34px;
-  background: linear-gradient(rgba(255, 231, 191, 0.9), transparent);
-}
-
 .date-block,
 .countdown-section,
 .rituals,
+.memory-section,
 .map-section,
 .closing {
   padding: 54px 64px;
@@ -461,6 +497,10 @@ h1 em {
   box-shadow: 0 8px 22px rgba(123, 78, 25, 0.08);
 }
 
+.event:nth-child(2) .event-mark {
+  font-size: 1.55rem;
+}
+
 .event h3 {
   margin: 0 0 10px;
   font-size: 2rem;
@@ -496,6 +536,55 @@ h1 em {
   color: #7b5b2e;
   font-size: 0.84rem;
   text-decoration: none;
+}
+
+.memory-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) 1fr;
+  gap: clamp(28px, 5vw, 58px);
+  align-items: center;
+  border-top: 1px solid #eee0ca;
+  background:
+    radial-gradient(circle at 15% 26%, rgba(190, 77, 91, 0.11), transparent 18rem),
+    linear-gradient(135deg, #fff8ee, #fffdf8 58%, #f7ecdd);
+  text-align: left;
+}
+
+.memory-photo {
+  aspect-ratio: 4 / 5;
+  border: 1px solid #dfc9a8;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ead9c5;
+  box-shadow: 0 18px 48px rgba(77, 45, 22, 0.13);
+}
+
+.memory-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 70%;
+}
+
+.memory-copy {
+  max-width: 520px;
+}
+
+.memory-copy h2 {
+  margin: 8px 0 18px;
+  color: #2f1712;
+  font-family: var(--script);
+  font-size: clamp(3.2rem, 7vw, 5.8rem);
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+.memory-copy p:last-child {
+  color: #6f5f4d;
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  line-height: 1.45;
 }
 
 .map-section {
@@ -643,6 +732,7 @@ h1 em {
   .date-block,
   .countdown-section,
   .rituals,
+  .memory-section,
   .map-section,
   .closing {
     padding-left: 28px;
@@ -654,8 +744,17 @@ h1 em {
   }
 
   .events,
+  .memory-section,
   .ritual-grid {
     grid-template-columns: 1fr;
+  }
+
+  .memory-section {
+    text-align: center;
+  }
+
+  .memory-copy {
+    margin: 0 auto;
   }
 
   .events {
@@ -741,6 +840,10 @@ h1 em {
 
   .event {
     padding: 28px 20px 26px;
+  }
+
+  .memory-photo {
+    aspect-ratio: 1 / 1.08;
   }
 
   .map-frame {
