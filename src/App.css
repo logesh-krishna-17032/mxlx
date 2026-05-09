@@ -74,7 +74,6 @@
 
 .lamp-right {
   right: 8%;
-  height: 92px;
 }
 
 .petal {
@@ -751,6 +750,18 @@ h1 em {
     min-height: 720px;
   }
 
+  .hanging-lamp {
+    height: 86px;
+  }
+
+  .lamp-left {
+    left: 9%;
+  }
+
+  .lamp-right {
+    right: 9%;
+  }
+
   .photo-panel::after {
     background:
       linear-gradient(0deg, rgba(45, 22, 16, 0.46), transparent 42%),
@@ -811,6 +822,10 @@ h1 em {
 
   .photo-panel {
     min-height: 690px;
+  }
+
+  .hanging-lamp {
+    height: 72px;
   }
 
   .opening-copy {

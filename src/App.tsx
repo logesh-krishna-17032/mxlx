@@ -186,7 +186,7 @@ function App() {
           ))}
         </section>
 
-        <section className="memory-section" aria-labelledby="memory-title">
+        {/* <section className="memory-section" aria-labelledby="memory-title">
           <div className="memory-photo">
             <img
               src="/invite/engagement-portrait.jpg"
@@ -201,12 +201,12 @@ function App() {
               into the wedding celebration.
             </p>
           </div>
-        </section>
+        </section> */}
 
         <section className="map-section" aria-labelledby="map-title">
           <div className="divider" aria-hidden="true">
             <span />
-            <i>ॐ</i>
+            <i>✦</i>
             <span />
           </div>
           <p className="section-label">Venue Location</p>
