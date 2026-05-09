@@ -9,7 +9,7 @@ const events = [
     date: 'Thursday, May 28, 2026',
     time: '7:00 PM onwards',
     note: 'An evening celebration with family and friends.',
-    icon: '✺',
+    icon: '⚜',
     calendarDates: '20260528T133000Z/20260528T173000Z',
   },
   {
@@ -58,7 +58,7 @@ function getCalendarUrl(title: string, dates: string) {
   )}`
 }
 
-function CountUnit({ value, label, pulse }: { value: number; label: string; pulse?: boolean }) {
+function CountUnit({ value, label }: { value: number; label: string }) {
   const [animKey, setAnimKey] = useState(0)
   const prevRef = useRef(value)
 
@@ -70,7 +70,7 @@ function CountUnit({ value, label, pulse }: { value: number; label: string; puls
   }, [value])
 
   return (
-    <div className={`count${pulse ? ' count-seconds' : ''}`}>
+    <div className="count">
       <strong key={animKey}>{String(value).padStart(2, '0')}</strong>
       <span>{label}</span>
     </div>
@@ -178,7 +178,7 @@ function App() {
             <CountUnit value={remaining.days} label="days" />
             <CountUnit value={remaining.hours} label="hours" />
             <CountUnit value={remaining.minutes} label="minutes" />
-            <CountUnit value={remaining.seconds} label="seconds" pulse />
+            <CountUnit value={remaining.seconds} label="seconds" />
           </div>
         </section>
 
