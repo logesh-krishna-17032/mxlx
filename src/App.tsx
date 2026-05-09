@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
 
 const weddingDate = new Date('2026-05-29T05:40:00+05:30')
@@ -56,6 +56,25 @@ function getCalendarUrl(title: string, dates: string) {
   )}&dates=${dates}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(
     address,
   )}`
+}
+
+function CountUnit({ value, label, pulse }: { value: number; label: string; pulse?: boolean }) {
+  const [animKey, setAnimKey] = useState(0)
+  const prevRef = useRef(value)
+
+  useEffect(() => {
+    if (prevRef.current !== value) {
+      prevRef.current = value
+      setAnimKey((k) => k + 1)
+    }
+  }, [value])
+
+  return (
+    <div className={`count${pulse ? ' count-seconds' : ''}`}>
+      <strong key={animKey}>{String(value).padStart(2, '0')}</strong>
+      <span>{label}</span>
+    </div>
+  )
 }
 
 function App() {
@@ -149,14 +168,17 @@ function App() {
         </section>
 
         <section className="countdown-section" aria-label="Countdown to wedding">
+          <div className="divider" aria-hidden="true">
+            <span />
+            <i>❧</i>
+            <span />
+          </div>
           <p className="section-label">Counting down to the celebration</p>
           <div className="countdown">
-            {Object.entries(remaining).map(([label, value]) => (
-              <div className="count" key={label}>
-                <strong>{String(value).padStart(2, '0')}</strong>
-                <span>{label}</span>
-              </div>
-            ))}
+            <CountUnit value={remaining.days} label="days" />
+            <CountUnit value={remaining.hours} label="hours" />
+            <CountUnit value={remaining.minutes} label="minutes" />
+            <CountUnit value={remaining.seconds} label="seconds" pulse />
           </div>
         </section>
 
