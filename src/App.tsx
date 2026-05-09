@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
 
 const weddingDate = new Date('2026-05-29T05:40:00+05:30')
+const siteUrl = 'https://meenu-logi.netlify.app/'
 
 const events = [
   {
@@ -92,7 +93,7 @@ function App() {
         '20260529T001000Z/20260529T011000Z',
       ),
       whatsapp: `https://wa.me/?text=${encodeURIComponent(
-        'Join us for the wedding of V. Logesh Krishna and L. Meenakshi on May 29, 2026 at Sri S.A.K Jai Maruthi Mahal A/c, Chennai.',
+        `Join us for the wedding of V. Logesh Krishna and L. Meenakshi on May 29, 2026 at Sri S.A.K Jai Maruthi Mahal A/c, Chennai.\n\nView invitation: ${siteUrl}`,
       )}`,
     }
   }, [])
